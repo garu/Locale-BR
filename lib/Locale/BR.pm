@@ -77,7 +77,7 @@ Returns an alphabetically ordered list of all Brazilian state names.
 =cut
 
 sub all_state_names {
-    return values %code_for_state;
+    return sort values %state_for_code;
 }
 
 =head2 all_state_codes
@@ -87,7 +87,7 @@ Returns an alphabetically ordered list of all Brazilian state codes.
 =cut
 
 sub all_state_codes {
-    return keys %code_for_state;
+    return sort keys %state_for_code;
 }
 
 =head1 SEE ALSO

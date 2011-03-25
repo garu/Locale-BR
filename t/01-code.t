@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 2708;
+use Test::More tests => 2764;
 
 use Locale::BR ':all';
 
@@ -126,33 +126,33 @@ foreach (permute_code('to')) {
 }
 
 my %codes = (
-'AC' => 1,
-'AL' => 1,
-'AP' => 1,
-'AM' => 1,
-'BA' => 1,
-'CE' => 1,
-'DF' => 1,
-'ES' => 1,
-'GO' => 1,
-'MA' => 1,
-'MT' => 1,
-'MS' => 1,
-'MG' => 1,
-'PA' => 1,
-'PB' => 1,
-'PR' => 1,
-'PE' => 1,
-'PI' => 1,
-'RJ' => 1,
-'RN' => 1,
-'RS' => 1,
-'RO' => 1,
-'RR' => 1,
-'SC' => 1,
-'SP' => 1,
-'SE' => 1,
-'TO' => 1,
+'AC' => 'Acre',
+'AL' => 'Alagoas',
+'AP' => 'Amapá',
+'AM' => 'Amazonas',
+'BA' => 'Bahia',
+'CE' => 'Ceará',
+'DF' => 'Distrito Federal',
+'ES' => 'Espírito Santo',
+'GO' => 'Goiás',
+'MA' => 'Maranhão',
+'MT' => 'Mato Grosso',
+'MS' => 'Mato Grosso do Sul',
+'MG' => 'Minas Gerais',
+'PA' => 'Pará',
+'PB' => 'Paraíba',
+'PR' => 'Paraná',
+'PE' => 'Pernambuco',
+'PI' => 'Piauí',
+'RJ' => 'Rio de Janeiro',
+'RN' => 'Rio Grande do Norte',
+'RS' => 'Rio Grande do Sul',
+'RO' => 'Rondônia',
+'RR' => 'Roraima',
+'SC' => 'Santa Catarina',
+'SP' => 'São Paulo',
+'SE' => 'Sergipe',
+'TO' => 'Tocantins',
 );
 
 foreach my $c ('aa'..'zz') {
@@ -160,4 +160,21 @@ foreach my $c ('aa'..'zz') {
     foreach (permute_code($c)) {
         is( code2state($_), undef, "checking $_" );
     }
+}
+
+my @all_codes = all_state_codes();
+is(scalar @all_codes, scalar keys %codes, 'total code count matches');
+
+my $i = 0;
+foreach my $code (sort keys %codes) {
+    is( $code, $all_codes[$i++], "code '$code' found (ordered)" );
+}
+
+
+my @all_names = all_state_names();
+is(scalar @all_names, scalar values %codes, 'total name count matches');
+
+$i = 0;
+foreach my $name (sort values %codes) {
+    is( $name, $all_names[$i++], "name '$name' found (ordered)" );
 }

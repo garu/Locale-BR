@@ -10,7 +10,6 @@ our %EXPORT_TAGS = (
 );
 
 
-
 =head1 NAME
 
 Locale::BR - Identify Brazilian states by two-letter codes and vice-versa
@@ -165,7 +164,9 @@ See http://dev.perl.org/licenses/ for more information.
         $state_for_code{$code} = $state;
         
         $code_for_state{uc $state}     = $code;
-        $code_for_state{uc $state_alt} = $code;
+        if ($state_alt) {
+            $code_for_state{uc $state_alt} = $code;
+        }
     }
     close DATA;
 }

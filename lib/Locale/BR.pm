@@ -17,7 +17,7 @@ Locale::BR - Identify Brazilian states by two-letter codes and vice-versa
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 my %code_for_state  = ();
 my %state_for_code  = ();

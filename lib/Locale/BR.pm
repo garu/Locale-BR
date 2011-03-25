@@ -9,6 +9,7 @@ our %EXPORT_TAGS = (
     all => [@EXPORT_OK],
 );
 
+=encoding utf8
 
 =head1 NAME
 
